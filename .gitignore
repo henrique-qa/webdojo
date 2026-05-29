@@ -9,12 +9,18 @@ pnpm-debug.log*
 .pnpm-debug.log*
 
 # ==================================================
+# Lock files (project uses npm/yarn interchangeably)
+# ==================================================
+package-lock.json
+yarn.lock
+
+# ==================================================
 # Cypress - artifacts only (tests and fixtures are tracked)
 # ==================================================
-web/cypress/videos/
-web/cypress/screenshots/
-web/cypress/downloads/
-web/cypress/results/
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+cypress/results/
 cypress.env.json
 
 # ==================================================
@@ -24,12 +30,6 @@ cypress.env.json
 .env.local
 .env.*.local
 *.env
-
-# ==================================================
-# Lock files (project uses npm/yarn interchangeably)
-# ==================================================
-package-lock.json
-yarn.lock
 
 # ==================================================
 # Build output (web/dist IS tracked - needed to serve the app)

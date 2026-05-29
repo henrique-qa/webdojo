@@ -6,9 +6,9 @@
 
 ## 📌 About
 
-WebDojo is a containerized web application used as a personal QA Automation study lab. The project covers real-world scenarios including **UI testing**, **API validation**, **chatbot interaction testing**, and **database-backed workflows**.
+WebDojo is a containerized web application used as a personal QA Automation study lab. The project covers real-world scenarios including **UI testing**, **API interception**, **drag-and-drop**, **iFrame interaction**, **hover events**, and **form validation**.
 
-This repository represents a **hands-on automation portfolio**, demonstrating senior-level proficiency in test architecture, custom commands, reusable fixtures, and maintainable test design patterns.
+This repository represents a **hands-on automation portfolio**, demonstrating proficiency in test architecture, custom commands, reusable fixtures, and maintainable test design patterns.
 
 ---
 
@@ -16,7 +16,8 @@ This repository represents a **hands-on automation portfolio**, demonstrating se
 
 | Layer | Technology |
 |---|---|
-| **Test Framework** | Cypress 13+ |
+| **Test Framework** | Cypress 14+ |
+| **Real Events** | cypress-real-events |
 | **Frontend (AUT)** | React + Vite (pre-built) |
 | **Backend / DB** | Node.js API + PostgreSQL 13 |
 | **Infrastructure** | Docker & Docker Compose |
@@ -28,16 +29,32 @@ This repository represents a **hands-on automation portfolio**, demonstrating se
 ## 📁 Project Structure
 
 ```
-webdojo-main/
-├── api/                  # Backend API (Node.js)
-├── web/                  # Frontend application (pre-built dist)
-│   └── dist/             # Static production build
-├── cypress/              # Cypress test suite
-│   ├── e2e/              # End-to-end test specs
-│   ├── support/          # Custom commands & global setup
-│   └── fixtures/         # Test data files
-├── docker-compose.yaml   # Infrastructure orchestration
-├── cypress.config.js     # Cypress configuration
+webdojo/
+├── cypress/                  # Cypress test suite (root-level)
+│   ├── e2e/                  # End-to-end test specs
+│   │   ├── login.cy.js
+│   │   ├── alerts.cy.js
+│   │   ├── cep.cy.js
+│   │   ├── consultancy.cy.js
+│   │   ├── github.cy.js
+│   │   ├── hover.cy.js
+│   │   ├── iframe.cy.js
+│   │   ├── kanban.cy.js
+│   │   ├── links.cy.js
+│   │   └── studio.cy.js
+│   ├── fixtures/             # Test data (JSON, PDF)
+│   └── support/
+│       ├── commands.js       # Custom Cypress commands
+│       ├── e2e.js            # Global setup
+│       ├── utils.js          # Helper functions
+│       └── actions/          # Page-action abstractions
+├── web/                      # Frontend application
+│   ├── dist/                 # Pre-built static assets
+│   └── package.json          # Frontend serve script
+├── api/                      # Backend API (Node.js)
+├── cypress.config.js         # Cypress configuration
+├── package.json              # Root: test scripts
+├── docker-compose.yaml       # Infrastructure orchestration
 └── .gitignore
 ```
 
@@ -71,9 +88,17 @@ npm run dev
 
 App will be available at: **http://localhost:3000**
 
-### 3. Configure Cypress
+### 3. Install Cypress dependencies
 
-Create a `cypress.env.json` file at the project root (never commit this file):
+From the **project root**:
+
+```bash
+npm install
+```
+
+### 4. Configure environment (optional)
+
+Create a `cypress.env.json` at the project root (never commit this file):
 
 ```json
 {
@@ -88,15 +113,20 @@ Create a `cypress.env.json` file at the project root (never commit this file):
 
 ## 🧪 Running Tests
 
+Run from the **project root**:
+
 ```bash
-# Open Cypress UI
-npx cypress open
+# Open Cypress interactive UI
+npm run test:ui
 
-# Run all tests headlessly
-npx cypress run
+# Run all tests headlessly (desktop viewport)
+npm test
 
-# Run a specific spec
-npx cypress run --spec "cypress/e2e/login.cy.js"
+# Run login spec only — desktop
+npm run test:login
+
+# Run login spec only — mobile viewport
+npm run test:login:mobile
 ```
 
 ---
@@ -105,17 +135,24 @@ npx cypress run --spec "cypress/e2e/login.cy.js"
 
 - Database credentials in `docker-compose.yaml` are **for local development only**
 - Never commit `cypress.env.json` or any file containing real credentials
-- The `.gitignore` is configured to exclude all sensitive files
+- The `.gitignore` is configured to exclude all sensitive files and Cypress artifacts (videos, screenshots)
 
 ---
 
 ## 🏗️ Tested Scenarios
 
-- [x] User authentication (login / logout)
-- [x] User registration & form validation
-- [x] Chatbot interaction & tracking flow
-- [x] API contract validation
-- [x] Negative test scenarios
+| Spec | Scenario |
+|------|----------|
+| `login.cy.js` | Auth flow, cookie & localStorage token validation |
+| `alerts.cy.js` | JS alert, confirm dialog, prompt stub |
+| `cep.cy.js` | API interception (ViaCEP) |
+| `consultancy.cy.js` | Complex form — PF/PJ, file upload, required fields |
+| `github.cy.js` | Table CRUD, link attributes |
+| `hover.cy.js` | Real mouse hover via `cypress-real-events` |
+| `iframe.cy.js` | iFrame element interaction |
+| `kanban.cy.js` | Drag & drop between columns |
+| `links.cy.js` | `target="_blank"` validation & navigation |
+| `studio.cy.js` | Cypress Studio generated test example |
 
 ---
 

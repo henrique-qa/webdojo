@@ -1,0 +1,18 @@
+{
+  "name": "webdojo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "QA Automation Lab — Cypress E2E test suite for the WebDojo application",
+  "scripts": {
+    "test": "npx cypress run --config viewportWidth=1440,viewportHeight=900",
+    "test:ui": "npx cypress open",
+    "test:login": "npx cypress run --spec cypress/e2e/login.cy.js --config viewportWidth=1440,viewportHeight=900",
+    "test:login:mobile": "npx cypress run --spec cypress/e2e/login.cy.js --config viewportWidth=414,viewportHeight=896"
+  },
+  "dependencies": {
+    "cypress-real-events": "^1.15.0"
+  },
+  "devDependencies": {
+    "cypress": "^14.5.4"
+  }
+}
