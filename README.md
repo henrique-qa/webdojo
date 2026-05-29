@@ -1,37 +1,37 @@
-# 🥋 WebDojo — QA Automation Lab
+# 🥋 WebDojo — Laboratório de Automação de QA
 
-> A full-stack practice environment designed to build and showcase end-to-end test automation skills using **Cypress**.
-
----
-
-## 📌 About
-
-WebDojo is a containerized web application used as a personal QA Automation study lab. The project covers real-world scenarios including **UI testing**, **API interception**, **drag-and-drop**, **iFrame interaction**, **hover events**, and **form validation**.
-
-This repository represents a **hands-on automation portfolio**, demonstrating proficiency in test architecture, custom commands, reusable fixtures, and maintainable test design patterns.
+> Um ambiente de prática full-stack projetado para construir e demonstrar habilidades em automação de testes de ponta a ponta (E2E) usando **Cypress**.
 
 ---
 
-## 🛠️ Tech Stack
+## 📌 Sobre o Projeto
 
-| Layer | Technology |
+O WebDojo é uma aplicação web containerizada utilizada como laboratório pessoal de estudos para Automação de QA. O projeto cobre cenários do mundo real, incluindo **testes de interface (UI)**, **interceptação de chamadas de API (mocks)**, **drag-and-drop**, **interação com iFrames**, **eventos de hover** e **validação de formulários complexos**.
+
+Este repositório representa um **portfólio prático de automação**, demonstrando proficiência em arquitetura de testes, comandos customizados, fixtures reutilizáveis e padrões de design de testes altamente manuteníveis.
+
+---
+
+## 🛠️ Stack Tecnológica
+
+| Camada | Tecnologia |
 |---|---|
-| **Test Framework** | Cypress 14+ |
-| **Real Events** | cypress-real-events |
-| **Frontend (AUT)** | React + Vite (pre-built) |
-| **Backend / DB** | Node.js API + PostgreSQL 13 |
-| **Infrastructure** | Docker & Docker Compose |
-| **DB Admin** | pgAdmin 4 |
-| **Runtime** | Node.js 22+ |
+| **Framework de Testes** | Cypress 14+ |
+| **Eventos Avançados** | cypress-real-events |
+| **Frontend (AUT)** | React + Vite (pré-compilado) |
+| **Backend / Banco de Dados** | API em Node.js + PostgreSQL 13 |
+| **Infraestrutura** | Docker & Docker Compose |
+| **Admin de Banco de Dados** | pgAdmin 4 |
+| **Ambiente de Execução** | Node.js 22+ |
 
 ---
 
-## 📁 Project Structure
+## 📁 Estrutura do Projeto
 
 ```
 webdojo/
-├── cypress/                  # Cypress test suite (root-level)
-│   ├── e2e/                  # End-to-end test specs
+├── cypress/                  # Suíte de testes Cypress (nível raiz)
+│   ├── e2e/                  # Arquivos de especificações de teste (specs) E2E
 │   │   ├── login.cy.js
 │   │   ├── alerts.cy.js
 │   │   ├── cep.cy.js
@@ -42,43 +42,43 @@ webdojo/
 │   │   ├── kanban.cy.js
 │   │   ├── links.cy.js
 │   │   └── studio.cy.js
-│   ├── fixtures/             # Test data (JSON, PDF)
+│   ├── fixtures/             # Dados estáticos para testes (JSON, PDF)
 │   └── support/
-│       ├── commands.js       # Custom Cypress commands
-│       ├── e2e.js            # Global setup
-│       ├── utils.js          # Helper functions
-│       └── actions/          # Page-action abstractions
-├── web/                      # Frontend application
-│   ├── dist/                 # Pre-built static assets
-│   └── package.json          # Frontend serve script
-├── api/                      # Backend API (Node.js)
-├── cypress.config.js         # Cypress configuration
-├── package.json              # Root: test scripts
-├── docker-compose.yaml       # Infrastructure orchestration
+│       ├── commands.js       # Comandos personalizados do Cypress
+│       ├── e2e.js            # Configurações globais de inicialização
+│       ├── utils.js          # Funções utilitárias auxiliares
+│       └── actions/          # Abstrações de ações de página (Page Actions)
+├── web/                      # Aplicação frontend
+│   ├── dist/                 # Artefatos estáticos pré-compilados do React
+│   └── package.json          # Script de inicialização do frontend
+├── api/                      # API backend (Node.js)
+├── cypress.config.js         # Arquivo de configuração do Cypress
+├── package.json              # Raiz: scripts de execução de testes
+├── docker-compose.yaml       # Orquestração da infraestrutura local
 └── .gitignore
 ```
 
 ---
 
-## ⚙️ Environment Setup
+## ⚙️ Configuração do Ambiente
 
-### Prerequisites
+### Pré-requisitos
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [Node.js 22+](https://nodejs.org/)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
 
-### 1. Start Infrastructure
+### 1. Iniciar a Infraestrutura
 
 ```bash
 docker compose up -d
 ```
 
-This will start:
-- **PostgreSQL** on port `5432`
-- **pgAdmin** on port `15432` → http://localhost:15432
+Isso inicializará:
+- **PostgreSQL** na porta `5432`
+- **pgAdmin** na porta `15432` → http://localhost:15432
 
-### 2. Start the Web Application
+### 2. Iniciar a Aplicação Web (Frontend)
 
 ```bash
 cd web
@@ -86,19 +86,19 @@ npm install
 npm run dev
 ```
 
-App will be available at: **http://localhost:3000**
+A aplicação estará disponível em: **http://localhost:3000**
 
-### 3. Install Cypress dependencies
+### 3. Instalar as Dependências do Cypress
 
-From the **project root**:
+A partir da **raiz do projeto**:
 
 ```bash
 npm install
 ```
 
-### 4. Configure environment (optional)
+### 4. Configurar Variáveis de Ambiente (Opcional)
 
-Create a `cypress.env.json` at the project root (never commit this file):
+Crie um arquivo `cypress.env.json` na raiz do projeto (nunca comite este arquivo):
 
 ```json
 {
@@ -111,49 +111,49 @@ Create a `cypress.env.json` at the project root (never commit this file):
 
 ---
 
-## 🧪 Running Tests
+## 🧪 Executando os Testes
 
-Run from the **project root**:
+Execute a partir da **raiz do projeto**:
 
 ```bash
-# Open Cypress interactive UI
+# Abrir a interface interativa do Cypress Test Runner
 npm run test:ui
 
-# Run all tests headlessly (desktop viewport)
+# Executar todos os testes em modo headless (viewport desktop)
 npm test
 
-# Run login spec only — desktop
+# Executar apenas o teste de login — desktop
 npm run test:login
 
-# Run login spec only — mobile viewport
+# Executar apenas o teste de login — viewport mobile
 npm run test:login:mobile
 ```
 
 ---
 
-## 🔒 Security Notes
+## 🔒 Notas de Segurança
 
-- Database credentials in `docker-compose.yaml` are **for local development only**
-- Never commit `cypress.env.json` or any file containing real credentials
-- The `.gitignore` is configured to exclude all sensitive files and Cypress artifacts (videos, screenshots)
-
----
-
-## 🏗️ Tested Scenarios
-
-| Spec | Scenario |
-|------|----------|
-| `login.cy.js` | Auth flow, cookie & localStorage token validation |
-| `alerts.cy.js` | JS alert, confirm dialog, prompt stub |
-| `cep.cy.js` | API interception (ViaCEP) |
-| `consultancy.cy.js` | Complex form — PF/PJ, file upload, required fields |
-| `github.cy.js` | Table CRUD, link attributes |
-| `hover.cy.js` | Real mouse hover via `cypress-real-events` |
-| `iframe.cy.js` | iFrame element interaction |
-| `kanban.cy.js` | Drag & drop between columns |
-| `links.cy.js` | `target="_blank"` validation & navigation |
-| `studio.cy.js` | Cypress Studio generated test example |
+- As credenciais de banco de dados no `docker-compose.yaml` são **apenas para ambiente de desenvolvimento local**.
+- Nunca comite o arquivo `cypress.env.json` ou qualquer outro arquivo que contenha credenciais reais.
+- O `.gitignore` está configurado para excluir todos os arquivos sensíveis e subprodutos de execução do Cypress (vídeos, capturas de tela).
 
 ---
 
-*Personal QA Automation study project — built to demonstrate test engineering skills.*
+## 🏗️ Cenários de Teste Cobertos
+
+| Spec | Cenários Testados |
+|------|-------------------|
+| `login.cy.js` | Fluxo de autenticação, validação de tokens em cookies e localStorage |
+| `alerts.cy.js` | Interação com alertas JS, caixas de confirmação (confirm) e stubs de prompts |
+| `cep.cy.js` | Interceptação de chamadas de API externas (ViaCEP) com mock de dados |
+| `consultancy.cy.js` | Formulário complexo com uploads de arquivos, distinção PF/PJ e campos obrigatórios |
+| `github.cy.js` | Operações de CRUD em tabelas, mapeamento e validações de links |
+| `hover.cy.js` | Interações reais de movimento do mouse (hover) com auxílio da biblioteca `cypress-real-events` |
+| `iframe.cy.js` | Interação e inserção de dados dentro de elementos aninhados em iFrames |
+| `kanban.cy.js` | Operações de arraste e solte (drag and drop) de cards entre colunas |
+| `links.cy.js` | Validação de links com o atributo `target="_blank"` e testes de navegação |
+| `studio.cy.js` | Demonstração e exemplo prático de teste gerado via Cypress Studio |
+
+---
+
+*Projeto de estudo de Automação de QA pessoal — Desenvolvido para demonstrar habilidades avançadas de engenharia de testes.*
