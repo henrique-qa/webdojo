@@ -2,6 +2,10 @@
 
 > Um ambiente de prática full-stack projetado para construir e demonstrar habilidades em automação de testes de ponta a ponta (E2E) usando **Cypress**.
 
+<p align="center">
+  <img src="assets/cypress-banner.png" alt="Cypress Test Automation Banner" width="100%">
+</p>
+
 ---
 
 ## 📌 Sobre o Projeto
