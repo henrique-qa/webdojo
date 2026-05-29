@@ -9,12 +9,12 @@ pnpm-debug.log*
 .pnpm-debug.log*
 
 # ==================================================
-# Cypress
+# Cypress - artifacts only (tests and fixtures are tracked)
 # ==================================================
-cypress/videos/
-cypress/screenshots/
-cypress/downloads/
-cypress/results/
+web/cypress/videos/
+web/cypress/screenshots/
+web/cypress/downloads/
+web/cypress/results/
 cypress.env.json
 
 # ==================================================
@@ -32,9 +32,8 @@ package-lock.json
 yarn.lock
 
 # ==================================================
-# Build output
+# Build output (web/dist IS tracked - needed to serve the app)
 # ==================================================
-dist/
 build/
 .cache/
 
